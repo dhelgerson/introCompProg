@@ -43,7 +43,7 @@ def printPoints(xs, ys):
         pasted into the website desmos.com so that you can visualize the data points.
     """
 
-def separatePointsList(points):
+def separatePointsList(points:list):
     """
     This function takes a single list of XY-Coordinate pairs and creates two separate
     lists. The first list should have all of the x-values from the list points. The second list 
@@ -54,7 +54,11 @@ def separatePointsList(points):
         xs = [1,1,2,3]
         ys = [1,2,3,4]
     """
-    pass
+    while len(points) > 0:
+        x,y = [],[]
+        x.append(points.pop(0))
+        y.append(points.pop(0))
+    return x,y
 
 def computeRegression(points):
     """
@@ -68,6 +72,7 @@ def computeRegression(points):
     - To compute the summations, you need to iterate over the XY-Coordinates and substitute 
       the values for the current iteration into the formula for m. The iteration is the summation!
     """
+    
     
 if __name__ == "__main__":
     p = generateRandomPointsWithTrend(input("y = (enter the rest of the equation)"), int(input("Number of points")), int(input("Tolerance: ")))
