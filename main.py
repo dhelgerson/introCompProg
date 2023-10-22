@@ -1,4 +1,5 @@
-my_dict = dict(bananas=1.59, fries=2.39, burger=3.50, sandwich=2.99)
-my_dict['burger'] = my_dict['sandwich']
-val = my_dict.pop('sandwich')
-print(my_dict['burger'])
+import csv
+with open('myfile.csv', 'r') as myfile:
+    csv_reader = csv.reader(myfile)
+    for row in csv_reader:
+        print(row[1])
