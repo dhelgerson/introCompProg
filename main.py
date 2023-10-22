@@ -75,7 +75,7 @@ def computeRegression(points):
     - To compute the summations, you need to iterate over the XY-Coordinates and substitute 
       the values for the current iteration into the formula for m. The iteration is the summation!
     """
-    x,y = separatePointsList(p)
+    x,y = separatePointsList(points)
     
     xbar = sum(x) / len(x)
     ybar = sum(y) / len(y)
