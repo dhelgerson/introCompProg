@@ -42,8 +42,8 @@ def printPoints(xs, ys):
         The purpose of this function is so that the XY-Coordinate pairs could be copied and
         pasted into the website desmos.com so that you can visualize the data points.
     """
-    header = "x   y"
-    return header + '\n'.join([f"{x}   {ys[i]}" for i,x in enumerate(xs)])
+    header = "x\ty\n"
+    return header + '\n'.join([f"{x}\t{ys[i]}" for i,x in enumerate(xs)]) + '\n'
 
 def separatePointsList(points:list):
     """
@@ -56,10 +56,11 @@ def separatePointsList(points:list):
         xs = [1,1,2,3]
         ys = [1,2,3,4]
     """
+    pointsList = points[:]
     x,y = [],[]
-    while len(points) > 0:
-        x.append(points.pop(0))
-        y.append(points.pop(0))
+    while len(pointsList) > 0:
+        x.append(int(pointsList.pop(0)))
+        y.append(int(pointsList.pop(0)))
     return x,y
 
 def computeRegression(points):
@@ -74,7 +75,17 @@ def computeRegression(points):
     - To compute the summations, you need to iterate over the XY-Coordinates and substitute 
       the values for the current iteration into the formula for m. The iteration is the summation!
     """
-    x,y = separatePointsList(points)
+    x,y = separatePointsList(p)
+    
+    xbar = sum(x) / len(x)
+    ybar = sum(y) / len(y)
+    
+    m = (sum([x[i]*y[i] for i in range(len(x))]) - len(x) * xbar * ybar)/(sum([xi**2 for xi in x])-len(x)*xbar**2)
+    
+    b = ybar - m*xbar
+    
+    
+    return f"y = {m:.2f}*x {'+' if b >= 0 else ''}{b:.2f}"
     
     
     
