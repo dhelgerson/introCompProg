@@ -7,7 +7,8 @@ bill: The amount of the bill.
 people: The number of diners to split the bill between.
 tax_percentage: The extra tax percentage to add to the bill.
 tip_percentage: The extra tip percentage to add to the bill.
-The tax or tip percentages are optional and may not be given when calling split_check. Use default parameter values of 0.15 (15%) for tip_percentage, and 0.09 (9%) for tax_percentage. Assume that the tip is calculated from the amount of the bill before tax.
+The tax or tip percentages are optional and may not be given when calling split_check. Use default parameter values of 0.15 (15%) for 
+tip_percentage, and 0.09 (9%) for tax_percentage. Assume that the tip is calculated from the amount of the bill before tax.
 
 Sample output with inputs: 25 2
 
@@ -21,7 +22,11 @@ Cost per diner: $64.25
 # add to the bill total, then divide by the number of diners.
 
 def split_check(bill,people,tax_percentage=.09,tip_percentage=.15):
-    return bill * (1+tax_percentage) * (1+tip_percentage) / people
+    tip = bill * tip_percentage
+    tax = bill * tax_percentage
+    total = bill + tip + tax
+    25
+    return total / people
 
 bill = float(input())
 people = int(input())
