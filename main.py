@@ -1,22 +1,22 @@
-'''Write a loop that prints each country's population in country_pop.
+from random import randint
+import json
+import turtle as t
 
-Sample output with input:
-'China:1365830000,India:1247220000,United States:318463000,Indonesia:252164800':
-China has 1365830000 people.
-India has 1247220000 people.
-United States has 318463000 people.
-Indonesia has 252164800 people.
-'''
+t.setworldcoordinates(-1,-1,5,5)
+t.shape('circle')
+t.hideturtle()
+t.penup()
 
-user_input = input()
-entries = user_input.split(',')
-country_pop = {}
+def createMatrix(rows,columns):
+    return [[randint(0,1) for y in range(columns)] for x in range(rows)]
 
-for pair in entries:
-    split_pair = pair.split(':')
-    country_pop[split_pair[0]] = split_pair[1]
-    # country_pop is a dictionary, Ex: { 'Germany':'82790000', 'France':'67190000' }
+matrix = createMatrix(5,5)
 
-for country in country_pop:
-    pop = country_pop[country]
-    print(f'{country} has {pop} people.')
+for row in enumerate(matrix):
+    for item in enumerate(row[1]):
+        if item[1]:
+            t.goto(row[0],item[0])
+            t.stamp()
+        print(row[0],item[0],item[1])
+        
+input()
