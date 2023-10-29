@@ -39,10 +39,11 @@ days_per_student = {}
 days = ['Monday','Tuesday','Wednesday','Thursday','Friday']
 def init():
     for day in days:
-        students_per_day[day] = 0
+        if day not in students_per_day:
+            students_per_day[day] = 0
     for id in student_names:
-        days_per_student[id] = 0
-init()
+        if id not in days_per_student:
+            days_per_student[id] = 0
 
 def reset_weekly_data():
     '''
@@ -52,7 +53,6 @@ def reset_weekly_data():
     
     students_per_day.clear()
     days_per_student.clear()
-    init()
 
     # TODO - write this function's body
 
@@ -72,14 +72,21 @@ def add_attendance_data( studentID, day ):
     returns: no return value
     '''
     
-    students_per_day[day] += 1
-    days_per_student[studentID] += 1
+    try:
+        students_per_day[day] += 1
+    except:
+        students_per_day[day] = 1
+    try:
+        days_per_student[studentID] += 1
+    except:
+        days_per_student[studentID] = 1
     
     return
 
 # --------------------------------------------------------------------------------
 
 def print_day_histogram(data:dict = None):
+    init()
     if data == None:
         data = students_per_day
     '''
@@ -103,6 +110,7 @@ def print_day_histogram(data:dict = None):
 # ---------------------------------------------------------------------------------
 
 def print_attendance_report():
+    init()
     '''
     Print a tutoring attendance report for the week.
     Alphabetical order by studentID
