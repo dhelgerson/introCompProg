@@ -35,6 +35,15 @@ days_per_student = {}
 # DO NOT MODIFY ABOVE THIS LINE
 # -------------------------------------------------------------------------------
 
+# some initialization
+days = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+def init():
+    for day in days:
+        students_per_day[day] = 0
+    for id in student_names:
+        days_per_student[id] = 0
+init()
+
 def reset_weekly_data():
     '''
     Clear both students_per_day and days_per_student.
@@ -43,6 +52,7 @@ def reset_weekly_data():
     
     students_per_day.clear()
     days_per_student.clear()
+    init()
 
     # TODO - write this function's body
 
@@ -62,18 +72,9 @@ def add_attendance_data( studentID, day ):
     returns: no return value
     '''
     
-    try:
-        students_per_day[day] += 1
-    except:
-        students_per_day[day] = 1
-    try:
-        days_per_student[studentID] += 1
-    except:
-        days_per_student[studentID] = 1
-
-
-    # TODO - write this function's body
-
+    students_per_day[day] += 1
+    days_per_student[studentID] += 1
+    
     return
 
 # --------------------------------------------------------------------------------
@@ -92,7 +93,7 @@ def print_day_histogram(data:dict = None):
 
     print( 'students per day\n' )
     
-    for day in data:
+    for day in days:
        print(f"{day:.3}:", ''.join(['#' for x in range(data[day])]))
 
     print( '' )
