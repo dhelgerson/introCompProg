@@ -93,7 +93,7 @@ def print_day_histogram(data:dict = None):
     print( 'students per day\n' )
     
     for day in data:
-       print(f"{day+':':4}", ''.join(['#' for x in range(data[day])]))
+       print(f"{day:.3}:", ''.join(['#' for x in range(data[day])]))
 
     print( '' )
 
@@ -116,7 +116,7 @@ def print_attendance_report():
     print( 'attendance report\n' )
 
     for id in sorted(days_per_student):
-        print(f"{id}  {student_names[id][1]:5} {student_names[id][0]:20} {days_per_student[id]:1}")
+        print(f"{id:5.5}  {' '.join([student_names[id][1],student_names[id][0]]):20} {days_per_student[id]:1}")
 
     print( '' )
 
