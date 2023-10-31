@@ -16,6 +16,6 @@ class Point():
     def gety(self): return self.y
     
     
-p1 = Point()
-
-print(p1)
+if __name__ == '__main__':
+    p1 = Point()
+    print(p1)
